@@ -21,12 +21,14 @@ require_relative 'entry'
 
   def remove_entry(name, phone_number, email)
     #use index of match to remove entry from entries
-    index = 0
-    entries.each do |entry|
-      if entry == entries[0]
-        entries.remove(index, entries[0])
+    delete_entry = nil
+    @entries.each do |entry|
+      if name == entry.name && phone_number == entry.phone_number && email == entry.email
+        delete_entry = entry
       end
     end
+
+    @entries.delete(delete_entry)
   end
 
 end
