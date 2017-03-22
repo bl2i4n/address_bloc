@@ -36,6 +36,7 @@ class MenuController
         system "clear"
         read_csv
         main_menu
+
       when 5
         system "clear"
         view_entry_n
@@ -54,17 +55,29 @@ class MenuController
 
     def view_entry_n
       puts "Please enter a number to view entry at specified number"
-      selected = gets.chomp
-      unless selected = nil
-        # how to display the entry at specific number
-          address_book.entries.each do |entry|
-          system "clear"
-          puts entry.to_s
-        end
-        else
-          puts "Please enter a valid entry number"
-        end
+      selected = gets.chomp.to_i #remove whitespace and convert string to integer
+
+      if selected < @address_book.entries.count
+        puts @address_book.entries[selected]
+        puts "Press enter to return to the main menu"
+        gets.chomp
+        system "clear"
+      else
+        puts "#{selected} is not a valid unput"
+        view_entry_n
       end
+    end
+
+      #my attempt
+      # unless selected = nil
+      #   # how to display the entry at specific number
+      #     address_book.entries.each do |entry|
+      #     system "clear"
+      #     puts entry.to_s
+      #   end
+      #   else
+      #     puts "Please enter a valid entry number"
+      #   end
 
     def view_all_entries
       address_book.entries.each do |entry|
