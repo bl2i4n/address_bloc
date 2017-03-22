@@ -1,6 +1,9 @@
 def greeting
-  ARGV.each do |arg, arg1|
-    puts "#{arg} + #{arg1}"
-  end
+  first, second, third, fourth = ARGV
+    puts "#{first} #{second}"
+    puts "#{first} #{third}"
+    puts "#{first} #{fourth}"
 
 end
+
+greeting
