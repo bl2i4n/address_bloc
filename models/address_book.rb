@@ -1,4 +1,5 @@
 require_relative 'entry'
+require "csv"
 
 class AddressBook
   attr_reader :entries
@@ -30,4 +31,19 @@ class AddressBook
     @entries.delete(delete_entry)
   end
 
+  #7
+  def import_from_csv(file_name)
+    #reads file using File.read
+    csv_text = File.read(file_name)
+    #parse file which then becomes CSV::Table
+    csv = CSV.parse(csv_text, headers: true, skip_blanks: true)
+
+    #8 iterate over CSV::Table object rows
+    csv.each do |row|
+      #create a hash for each row
+      row_hash = row.to_hash
+      #convert each row_hash to an entry using add_entry method
+      add_entry(row_hash["name"], row_hash["phone_number"], row_hash["email"])
+    end
+  end
 end
