@@ -77,8 +77,24 @@ class AddressBook
   end
 
 ### assignment 8
-  def iterative_search
+  def iterative_search(name)
+    #my attempt at the assignment
+    # i = 0
+    #
+    # while i <= (entries.length - 1)
+    #   if entries[i] == name
+    #     return entries[i]
+    #   else
+    #     i += 1
+    #   end
+    # end
+    # return nil
+    @entries.each do |entry|
+      if entry.name == name
+        return entry
+      end
+    end
+    return nil
   end
 ###
-
 end
