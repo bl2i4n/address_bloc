@@ -57,7 +57,7 @@ class AddressBook
     #2 loop while our lower index is less than or equal to our upper index
     while lower <= upper
       #3 find the middle index by taking sum of
-      #lower and upper and dividing by teaisaweso#ruby truncates decimal numbers
+      #lower and upper and dividing by two
       #retrieve name of entry at middle index and store it in mid_name
       mid = (lower + upper) / 2
       mid_name = entries[mid].name
