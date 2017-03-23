@@ -12,9 +12,37 @@ RSpec.describe AddressBook do
     expect(entry.email).to eq expected_email
   end
 
-
   #describe and it statements are Rspec paradigm to explain what we are testing
   describe "attributes" do
+
+    ####
+    #assignment for checkpoint 7
+    it "checking another csv file" do
+      expect(book).to respond_to(:entries)
+      book.import_from_csv("entries2.csv")
+      #check the first entry
+      entry_one = book.entries[0]
+
+      check_entry(entry_one, "Billy", "555-555-485", "billy@blocmail.com")
+    end
+    #assignment for checkpoint 7
+    it "imports the 2nd entry in entries2" do
+        book.import_from_csv("entries2.csv")
+        #check second entry
+        entry_two = book.entries[1]
+
+        check_entry(entry_two, "Boby", "555-555-541", "boby@blocmail.com")
+    end
+    #assignment for checkpoint 7
+    it "imports the 3rd entry in entries2" do
+        book.import_from_csv("entries2.csv")
+        #check second entry
+        entry_three = book.entries[2]
+
+        check_entry(entry_three, "Joey", "555-555-366", "joey@blocmail.com")
+    end
+    ####
+
     #it explains the functionality of the method we're testing
     it "responds to entries" do
       expect(book).to respond_to(:entries)
@@ -25,39 +53,39 @@ RSpec.describe AddressBook do
       check_entry(entry_one, "Bill", "555-555-4854", "bill@blocmail.com")
     end
 
-          it "imports the 2nd entry" do
-              book.import_from_csv("entries.csv")
-              #check second entry
-              entry_two = book.entries[1]
+    it "imports the 2nd entry" do
+        book.import_from_csv("entries.csv")
+        #check second entry
+        entry_two = book.entries[1]
 
-              check_entry(entry_two, "Bob", "555-555-5415", "bob@blocmail.com")
-          end
+        check_entry(entry_two, "Bob", "555-555-5415", "bob@blocmail.com")
+    end
 
-          it "imports the 3rd entry" do
-              book.import_from_csv("entries.csv")
-              #check third entry
-              entry_three = book.entries[2]
+    it "imports the 3rd entry" do
+        book.import_from_csv("entries.csv")
+        #check third entry
+        entry_three = book.entries[2]
 
-              check_entry(entry_three, "Joe", "555-555-3660", "joe@blocmail.com")
+        check_entry(entry_three, "Joe", "555-555-3660", "joe@blocmail.com")
 
-          end
+    end
 
-          it "imports the 4th entry" do
-              book.import_from_csv("entries.csv")
-              #check fourth entry
-              entry_four = book.entries[3]
+    it "imports the 4th entry" do
+        book.import_from_csv("entries.csv")
+        #check fourth entry
+        entry_four = book.entries[3]
 
-              check_entry(entry_four, "Sally", "555-555-4646", "sally@blocmail.com")
+        check_entry(entry_four, "Sally", "555-555-4646", "sally@blocmail.com")
 
-          end
+    end
 
-          it "imports the 5th entry" do
-              book.import_from_csv("entries.csv")
-              #check fifth entry
-              entry_five = book.entries[4]
+    it "imports the 5th entry" do
+        book.import_from_csv("entries.csv")
+        #check fifth entry
+        entry_five = book.entries[4]
 
-              check_entry(entry_five, "Sussie", "555-555-2036", "sussie@blocmail.com")
-          end
+        check_entry(entry_five, "Sussie", "555-555-2036", "sussie@blocmail.com")
+    end
 
 
     it "initializes entries as an array" do
@@ -68,6 +96,8 @@ RSpec.describe AddressBook do
       expect(book.entries.size).to eq(0)
     end
   end
+
+  #need to fix this
 
   # describe "#add_entry" do
   #   it "adds only one entry to the address book" do
@@ -103,6 +133,23 @@ RSpec.describe AddressBook do
   #     expect(book.entries.first.name).to eq("Brian Dela Cruz")
   #   end
   # end
+
+  ####
+  #assignment 7 checking another csv file
+  describe "#import_from_csv2" do
+    it "imports the correct number of entries for another file" do
+      # call import_from_csv on the book object which has a type
+      #AddressBook,
+      book.import_from_csv("entries2.csv")
+      #save the size of AddressBook.entries to our local variable book_size
+      book_size = book.entries.size
+
+      #check the size of the entries in AddressBook
+      expect(book_size).to eq 3
+    end
+  end
+  ####
+
 
   # Test that AddressBook's .import_from_csv() method is working as expected_string
   describe "#import_from_csv" do
