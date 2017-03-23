@@ -172,4 +172,23 @@ RSpec.describe AddressBook do
 
   end
 
+### assignment 8
+  describe "#iterative_search" do
+
+    it "searches AddressBook for a non-existent entry using iterative_search" do
+      book.import_from_csv("entries.csv")
+      entry = book.iterative_search("Dan")
+      expect(entry).to be_nil
+    end
+
+    #adding tests for assignment
+    it "searches AddressBook for Bill using iterative_search" do
+      book.import_from_csv("entries.csv")
+      entry = book.iterative_search("Bill")
+      expect(entry).to be_a Entry
+      check_entry(entry, "Bill", "555-555-4854", "bill@blocmail.com")
+    end
+
+###
+
 end
