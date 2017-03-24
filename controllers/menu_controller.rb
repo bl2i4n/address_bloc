@@ -41,8 +41,14 @@ class MenuController
         system "clear"
         view_entry_n
         main_menu
-
+        #assignment 9
       when 6
+        system "clear"
+        puts "Caution: This will remove all entries stored"
+        detonate
+        main_menu
+        #
+      when 7
         puts "Good-bye!"
         exit(0)
 
@@ -228,6 +234,11 @@ class MenuController
           puts entry.to_s
           search_submenu(entry)
         end
+      end
+
+      def detonate
+        address_book.entries.delete
+        puts "All entries deleted. Bomb detonated"
       end
 
   end
