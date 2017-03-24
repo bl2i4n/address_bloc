@@ -14,7 +14,8 @@ class MenuController
     puts "3 - Search for an entry"
     puts "4 - Import entries from a CSV"
     puts "5 - View Entry Number n"
-    puts "6 - Exit"
+    puts "6 - Delete all entries"
+    puts "7 - Exit"
     print "Enter your selection: "
 
     selection = gets.to_i
@@ -237,8 +238,12 @@ class MenuController
       end
 
       def detonate
-        address_book.entries.delete
-        puts "All entries deleted. Bomb detonated"
+        address_book.entries.each do |entry|
+          system "clear"
+          puts entry.delete
+          puts "All entries deleted. Bomb detonated"
+          system "clear"
+        end
       end
 
   end
