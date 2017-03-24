@@ -46,7 +46,8 @@ class MenuController
       when 6
         system "clear"
         puts "Caution: This will remove all entries stored"
-        detonate
+        @address_book.detonate
+        puts "All entries have been removed"
         main_menu
         #
       when 7
@@ -145,7 +146,7 @@ class MenuController
 
       #3
       begin
-        entry_count = address.import_from_csv(file_name).count
+        entry_count = address_book.import_from_csv(file_name).count
         system "clear"
         puts "#{entry_count} new entries added from #{file_name}"
       rescue
@@ -234,15 +235,6 @@ class MenuController
           puts "#{selection} is not a valid input"
           puts entry.to_s
           search_submenu(entry)
-        end
-      end
-
-      def detonate
-        address_book.entries.each do |entry|
-          system "clear"
-          puts entry.delete
-          puts "All entries deleted. Bomb detonated"
-          system "clear"
         end
       end
 
